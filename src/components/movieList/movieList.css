@@ -1,0 +1,197 @@
+/* Container for the entire movie list */
+.movie__group {
+    padding: 2rem 3rem;
+    margin: 2rem auto;
+    overflow: hidden;
+    background-color: #121212; /* Dark background for better contrast */
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.6);
+}
+
+/* Title of the movie list */
+.list__title {
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+    color: #fff;
+    text-transform: uppercase;
+    border-bottom: 2px solid #ff5722;
+    padding-bottom: 0.5rem;
+    transition: color 0.3s ease, border-bottom-color 0.3s ease;
+}
+
+.list__title:hover {
+    color: #ff5722;
+    border-bottom-color: #ff5722;
+}
+
+/* Slider Container */
+.movie__list {
+    position: relative;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+}
+
+/* Slider Button */
+.slider__button {
+    background-color: rgba(0, 0, 0, 0.5);
+    border: none;
+    color: #fff;
+    font-size: 2rem;
+    cursor: pointer;
+    padding: 0.5rem;
+    border-radius: 50%;
+    position: absolute;
+    z-index: 1;
+    transition: background-color 0.3s ease;
+}
+
+.slider__button:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+.prev {
+    left: 10px;
+}
+
+.next {
+    right: 10px;
+}
+
+/* Slider Wrapper */
+.movie__slider {
+    display: flex;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    width: 100%;
+    gap: 1rem; /* Gap between cards */
+    padding: 1rem 0;
+}
+
+.movie__slider::-webkit-scrollbar {
+    display: none; /* Hide scrollbar for WebKit browsers */
+}
+
+.cards {
+    flex: 0 0 auto;
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+    border-radius: 15px;
+    overflow: hidden;
+    min-width: 200px;
+    margin: 0.5rem;
+    cursor: pointer;
+    z-index: 0;
+    border: 2px solid rgba(99, 99, 99, 0.5);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+    background: #000;
+}
+
+.cards:hover {
+    transform: translateY(-10px) scale(1.05);
+    z-index: 10;
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.6);
+    border-color: #ff5722;
+}
+
+/* Card Image */
+.cards__img {
+    height: 300px;
+    width: 100%;
+    object-fit: cover;
+    transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+.cards:hover .cards__img {
+    opacity: 0.6;
+    transform: scale(1.1);
+}
+
+/* Card Overlay */
+.cards__overlay {
+    position: absolute;
+    padding: 1rem;
+    bottom: 0;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0));
+    opacity: 0;
+    transition: opacity 0.4s ease, transform 0.4s ease;
+    transform: translateY(10px);
+}
+
+.cards:hover .cards__overlay {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Card Title */
+.card__title {
+    font-weight: bold;
+    font-size: 1.4rem;
+    margin-bottom: 0.5rem;
+    color: #fff;
+    animation: fadeInUp 0.6s ease-out;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+}
+
+/* Card Runtime */
+.card__runtime {
+    font-size: 0.85rem;
+    margin-bottom: 0.5rem;
+    color: #ddd;
+    font-weight: 600;
+}
+
+/* Card Rating */
+.card__rating {
+    float: right;
+    font-size: 1rem;
+    color: #ffd700;
+    display: flex;
+    align-items: center;
+}
+
+/* Card Description */
+.card__description {
+    font-style: italic;
+    font-size: 0.85rem;
+    margin-bottom: 0.5rem;
+    color: #ddd;
+    line-height: 1.4;
+    transition: opacity 0.4s ease;
+}
+
+.cards:hover .card__description {
+    opacity: 0.8;
+}
+
+/* Favourite Indicator */
+.favourite__indicator {
+    position: absolute;
+    right: 12px;
+    top: 12px;
+    font-size: 2rem;
+    color: #ff5722;
+    transition: transform 0.4s ease, color 0.4s ease;
+}
+
+.cards:hover .favourite__indicator {
+    transform: scale(1.3);
+    color: #f44336;
+}
+
+/* Animation for Card Title */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
